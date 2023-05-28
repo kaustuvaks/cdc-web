@@ -1,4 +1,5 @@
-import { Outlet , useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
+import job from './job.module.css';
 
 function Job(props) {
 
@@ -6,16 +7,20 @@ function Job(props) {
     const state = location.state;
     return(
         <>
-                {
-                    console.log("in job")
-                }
-            <div className="container py-3">
-                <p>hello world</p>
-                    <p>Hello {state.job}</p>
-                <p>{state._id}</p>
-            
+            <div className={ job.callout }>
+                <div className="text-center text-white py-5 text-bold" style={{ textTransform:"uppercase", textDecoration:"underline 6px"}}>
+                    <p className="display-1 font-weight-bold">{state.job}</p>
+                </div>
             </div>
-            <Outlet/>
+
+            <div className='container'>
+                <div className="row mt-3">
+                    <div className='col-lg-8'>
+                        
+                    </div>
+                    <div className='col-lg-4'>details</div>
+                </div>
+            </div>
         </>
     );
 }
