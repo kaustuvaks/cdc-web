@@ -5,49 +5,53 @@ import App from './App';
 import Openings from './pages/Openings';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import Job from './components/Job';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-		<header>
 			<Router>
-				<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-					<div class="container-fluid">
+		<header>
+				<nav className="navbar navbar-expand-lg navbar-light bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+					<div className="container-fluid">
 						
-						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
+						<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+							<span className="navbar-toggler-icon"></span>
 						</button>
-						<div class="collapse navbar-collapse" id="navbarNav">
-							<ul class="navbar-nav">
-								<li class="nav-item"><Link to="/" class="navbar-brand">CDC-WEB</Link></li>
-								<li class="nav-item">
-								<Link to="/" class="nav-link active">Home</Link>
+						<div className="collapse navbar-collapse" id="navbarNav">
+							<ul className="navbar-nav">
+								<li className="nav-item"><Link to="/" class="navbar-brand">CDC-WEB</Link></li>
+								<li className="nav-item">
+								<Link to="/" className="nav-link active">Home</Link>
 								</li>
-								<li class="nav-item">
-									<Link to="/openings" class="nav-link active">Openings</Link>
+								<li className="nav-item">
+									<Link to="/openings" className="nav-link active">Openings</Link>
 								</li>
 								
 							</ul>
-							<div class="dropdown text">
-								<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-									<img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle"/>
+							<div className="dropdown text">
+								<a href="#" className="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+									<img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle"/>
 								</a>
-								<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-									<li><a class="dropdown-item" href="#">Settings</a></li>
-									<li><a class="dropdown-item" href="#">Profile</a></li>
-									<li><hr class="dropdown-divider" /></li>
-									<li><a class="dropdown-item" href="#">Sign out</a></li>
+								<ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+									<li><a className="dropdown-item" href="#">Settings</a></li>
+									<li><a className="dropdown-item" href="#">Profile</a></li>
+									<li><hr className="dropdown-divider" /></li	>
+									<li><a className="dropdown-item" href="#">Sign out</a></li>
 								</ul>
 							</div>
 						</div>						
 					</div>
 				</nav>
+      </header>
 				<Routes>
 					<Route exact path="/" Component={App}/>
-					<Route path="/openings" Component={Openings}/>
+					<Route path="/openings" element={<Openings />} >
+						
+					</Route>
+						<Route path="openings/job/:jobName" element={<Job />} />
 				</Routes>
 			</Router>
-      </header>
   </React.StrictMode>
 );
 
