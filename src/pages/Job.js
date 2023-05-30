@@ -1,5 +1,5 @@
 import {useLocation} from 'react-router-dom';
-import job from './job.module.css';
+import job from '../components/job.module.css';
 
 function Job(props) {
 
