@@ -5,7 +5,7 @@ import App from './App';
 import Openings from './pages/Openings';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import Job from './components/Job';
+import Job from './pages/Job';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

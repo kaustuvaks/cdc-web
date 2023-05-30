@@ -1,9 +1,6 @@
 import Jobc4 from '../components/Jobc4';
-import Job from '../components/Job';
 import {useEffect, useState} from 'react';
 import { Routes,Route, Link ,Outlet, useNavigate} from 'react-router-dom';
-import { generatePath } from "react-router";
-import Testbt from '../components/Testbt';
 import NotFound from '../components/NotFound';
 
 function Openings(){
@@ -57,7 +54,7 @@ function Openings(){
 									<div class="row " onClick={() => handleClick(pathTex, elem)}>
 										<Jobc4 branches={elem.branches} name={elem.job} key={elem._id}/>
 									</div>
-									);
+							);
 						})
 					}
 				</div>
