@@ -6,7 +6,7 @@ import Openings from './pages/Openings';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Job from './pages/Job';
-import Login from './pages/Login'
+import Signup from './pages/Signup'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -53,7 +53,7 @@ root.render(
 					</Route>
 					
 
-					<Route path="/login" element={<Login />} />
+					<Route path="/signup" element={<Signup />} />
 				</Routes>
 			</Router>
   </React.StrictMode>
