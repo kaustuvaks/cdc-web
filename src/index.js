@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Job from './pages/Job';
 import Signup from './pages/Signup'
+import Login from './pages/Login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -48,12 +49,13 @@ root.render(
 				<Routes>
 					<Route exact path="/" Component={App}/>
 					<Route path="/openings" element={<Openings />} >
-						
-					<Route path="openings/job/:jobName" element={<Job />} />
+						<Route index={true} element={<Openings />}></Route>
+						<Route path="openings/job/:jobName" element={<Job />} />
 					</Route>
 					
 
 					<Route path="/signup" element={<Signup />} />
+					<Route path="/login" element={<Login />} />
 				</Routes>
 			</Router>
   </React.StrictMode>

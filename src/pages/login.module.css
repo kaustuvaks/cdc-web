@@ -1,0 +1,69 @@
+.main-head{
+    height: 150px;
+    background: #FFF;
+   
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .loginForm{
+        margin-top: 10%;
+    }
+
+    .registeForm{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%; 
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        
+        top: 0;
+        left: 0;
+    }
+
+    .loginForm{
+        margin-top: 80%;
+    }
+
+    .registerFormorm{
+        margin-top: 20%;
+    }
+}
+
+
+.loginMainText{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+.loginMainText h2{
+    font-weight: 300;
+}
+
+.btnBlack{
+    background-color: #000 !important;
+    color: #fff;
+}
