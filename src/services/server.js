@@ -1,5 +1,5 @@
 const router = require('./api')
-const router2 = require("./userapi")
+const myUserApi = require("./userapi")
 const cors = require('cors')
 const express = require('express')
 
@@ -12,17 +12,47 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use(router);
-app.use(router2)
+app.use(myUserApi.routerUser)
 
 app.get('/', async (req,res)=>{
     res.send("hello");
 })
 
 app.post('/signup-form', async (req, res) => {
-    console.log('inside form')
-    const formData = req.body;
-    console.log(formData);
-    res.send('Form data received successfully');
+    const registerFormData = req.body;
+    const { firstName, lastName, email, password } = req.body;
+    // console.log(email);
+    try{
+        const check = await myUserApi.users.findOne({email:email});
+
+        if(check){
+            alert("email alredy exists");
+            res.json("exists")
+        }else{
+            await myUserApi.users.insertMany({name:`${firstName}+" "+${lastName}`,
+                                                        email:email,
+                                                        password : password});
+        }
+    }catch{
+        
+    }
+});
+
+app.post('/login-form', async (req, res) => {
+    const {email, password} = req.body;
+    console.log(email);
+    try{
+        const check = await myUserApi.users.findOne({email:email});
+
+        if(check){
+           
+            res.json("exists")
+        }else{
+            res.json("notexists")
+        }
+    }catch{
+        
+    }
 })
 
 app.listen(port, () => {

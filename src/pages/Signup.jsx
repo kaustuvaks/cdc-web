@@ -35,7 +35,9 @@ function Signup(){
         e.preventDefault();
         try {
             await axios.post('http://localhost:4900/signup-form', { firstName, lastName, email, password }).then((response) => {
-                navigate("/")
+                if(response.data === "exists"){
+                    navigate("/login");
+                }
             });
             
         } catch (error) {

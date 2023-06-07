@@ -28,6 +28,10 @@ routerUser.get('/api/users',cors(), async function(req, res, next){
     res.end();
 });
 
+// routerUser.post('/api/user', cors(), async function(req, res, next){
+//     const {} = req.body;
+// });
+
 mongoose.connect('mongodb://localhost:27017/', {
     dbName:"cdc-web",
     useNewUrlParser: true,
@@ -38,4 +42,4 @@ mongoose.connect('mongodb://localhost:27017/', {
     console.log(err);
 });
 
-module.exports = routerUser;
+module.exports = {routerUser, users};

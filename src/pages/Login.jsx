@@ -1,6 +1,40 @@
 import login from './login.module.css';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login(){
+
+    const navigate = useNavigate();
+
+    const[email, setEmail] = useState('');
+    const[password, setPassword] = useState('');
+    const[submitted, setSubmitted] = useState(false);
+
+    const handleEmail = (e) => {
+        setEmail(e.target.value);
+    };
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    };
+
+    const  handleSubmit = async (e) => {
+        setSubmitted(true);
+        //console.log("inside on login submit");
+        e.preventDefault();
+        try {
+            await axios.post('http://localhost:4900/login-form', { email, password }).then((response) => {
+                if(response.data === "notexists"){
+                    navigate("/signup")
+                }
+            });
+            
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     return (
         <>
@@ -13,17 +47,16 @@ function Login(){
             <div className={login.main}>
                 <div className="col-md-6 col-sm-12">
                     <div className={login.loginForm}>
-                        <form className="form">
+                        <form className="form" method="post" action="/login-form">
                             <div className="form-group">
-                                <label>User Name</label>
-                                <input type="text" className="form-control" placeholder="User Name" />
+                                <label>Email</label>
+                                <input type="text" className="form-control" placeholder="email" onChange={handleEmail}/>
                             </div>
                             <div className="form-group">
                                 <label>Password</label>
-                                <input type="password" className="form-control" placeholder="Password"/>
+                                <input type="password" className="form-control" placeholder="Password" onChange={handlePassword}/>
                             </div>
-                            <button type="submit" className={`btn ${login.btnBlack}`}>Login</button>
-                            <button type="submit" className="btn btn-secondary">Register</button>
+                            <button type="submit" className={`btn ${login.btnBlack}`} onClick={handleSubmit}>Login</button>
                         </form>
                     </div>
                 </div>
