@@ -6,12 +6,38 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Job from './pages/Job';
 import Home from './pages/Home';
+import { createContext, useState } from 'react';
+
+export const UserAuthContext = createContext();
 
 function App() {
 
+	// const state = {	
+	// 	"studentId": Number,
+	// 	"name": "",
+	// 	"email": "",
+	// 	"password": "",
+	// 	"skills": [],
+	// 	"education": {
+	// 		"college": "",
+	// 		"degree": "",
+	// 		"graduationYear": 2023
+	// 	},
+	// 	"projects": [],
+	// 	"internships": [{
+	// 		"company": "",
+	// 		"position": "",
+	// 		"startYear": 1900,
+	// 		"endYear": 1900
+	// 	}],
+	// 	"certificates": [],
+	// 	"resume": "",
+	// 	"jwtToken": ""
+	// }
 
+	const [user, setUser] = useState({});
 	return (
-		<>
+		<UserAuthContext.Provider value={{user, setUser}}>
 			<header>
 				<nav className="navbar navbar-expand-lg navbar-light bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					<div className="container-fluid">
@@ -48,7 +74,7 @@ function App() {
 
 			
 			<Routes>
-				<Route exact path="/" element={<Home/>}/>
+				<Route exact path="/" element={<Home user={user}/>}/>
 				<Route path="openings" element={<Openings />} />
 				<Route path="openings/job/:jobName" element={<Job />} />
 				
@@ -56,7 +82,7 @@ function App() {
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/login" element={<Login />} />
 			</Routes>
-		</>
+		</UserAuthContext.Provider>
 
 	);
 }

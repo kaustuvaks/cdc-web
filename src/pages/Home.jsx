@@ -1,6 +1,6 @@
 import Post from '../components/Post';
 
-function Home(){
+function Home({user}){
     return(
 
             <main>
@@ -9,7 +9,7 @@ function Home(){
                     <div className="col-lg-3">
                         <div className="card mb-3">
                             <div className="card-body">
-                                <h5 className="card-title">Prayag Sahu</h5>
+                                <h5 className="card-title">{user.name}</h5>
                                 <p className="card-text">View and edit your profile</p>
                                 <a  className="btn btn-primary" href="#">View Profile</a>
                             </div>

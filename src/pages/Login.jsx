@@ -1,11 +1,16 @@
 import login from './login.module.css';
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import { UserAuthContext } from '../App';
+
 function Login(){
 
+    const {user, setUser} = useContext(UserAuthContext);
+
     const navigate = useNavigate();
+
 
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
@@ -31,6 +36,7 @@ function Login(){
                 if(response.data.value === "notexists"){
                     
                 }else if(response.data.value === "exists"){
+                    setUser(response.data.users)
                     navigate("/", {state:response.data.users})
                 }
             });
