@@ -25,8 +25,13 @@ function Login(){
         e.preventDefault();
         try {
             await axios.post('http://localhost:4900/login-form', { email, password }).then((response) => {
-                if(response.data === "notexists"){
-                    navigate("/signup")
+
+
+                console.log(response.data);
+                if(response.data.value === "notexists"){
+                    
+                }else if(response.data.value === "exists"){
+                    navigate("/", {state:response.data.users})
                 }
             });
             

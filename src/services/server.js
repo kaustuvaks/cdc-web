@@ -26,12 +26,13 @@ app.post('/signup-form', async (req, res) => {
         const check = await myUserApi.users.findOne({email:email});
 
         if(check){
-            alert("email alredy exists");
-            res.json("exists")
+            res.send({value:"exists"}).status(200)
         }else{
-            await myUserApi.users.insertMany({name:`${firstName}+" "+${lastName}`,
+            await myUserApi.users.insertMany({name:`${firstName} ${lastName}`,
                                                         email:email,
                                                         password : password});
+            
+            res.send({value:"notexists"})
         }
     }catch{
         
@@ -46,9 +47,9 @@ app.post('/login-form', async (req, res) => {
 
         if(check){
            
-            res.json("exists")
+            res.send({value:"exists", users:check}).status(200)
         }else{
-            res.json("notexists")
+            res.send({value:"notexists", users:{}})
         }
     }catch{
         

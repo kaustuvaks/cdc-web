@@ -1,66 +1,63 @@
 import './App.css';
 import Post from './components/Post';
+import { Routes, Route, Link } from 'react-router-dom';
+import Openings from './pages/Openings';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Job from './pages/Job';
+import Home from './pages/Home';
 
 function App() {
+
+
 	return (
 		<>
-
-			<main>
-				<div className="container mt-4">
-					<div className="row">
-						<div className="col-lg-3">
-							<div className="card mb-3">
-								<div className="card-body">
-									<h5 className="card-title">Your Profile</h5>
-									<p className="card-text">View and edit your profile</p>
-									<a href="#" className="btn btn-primary">View Profile</a>
-								</div>
+			<header>
+				<nav className="navbar navbar-expand-lg navbar-light bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+					<div className="container-fluid">
+						
+						<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+							<span className="navbar-toggler-icon"></span>
+						</button>
+						<div className="collapse navbar-collapse" id="navbarNav">
+							<ul className="navbar-nav">
+								<li className="nav-item"><Link to="/" class="navbar-brand">CDC-WEB</Link></li>
+								<li className="nav-item">
+								<Link to="/" className="nav-link active">Home</Link>
+								</li>
+								<li className="nav-item">
+									<Link to="/openings" className="nav-link active">Openings</Link>
+								</li>
+								
+							</ul>
+							<div className="dropdown text">
+								<a href="#" className="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+									<img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle"/>
+								</a>
+								<ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+									<li><a className="dropdown-item" href="#">Settings</a></li>
+									<li><a className="dropdown-item" href="#">Profile</a></li>
+									<li><hr className="dropdown-divider" /></li	>
+									<li><a className="dropdown-item" href="#">Sign out</a></li>
+								</ul>
 							</div>
-							<div className="card">
-								<div className="card-body">
-									<h5 className="card-title">People You May Know</h5>
-									<ul className="list-group">
-										<li className="list-group-item d-flex justify-content-between align-items-center">
-										John Doe
-										<button className="btn btn-sm btn-outline-primary">Connect</button>
-										</li>
-										<li className="list-group-item d-flex justify-content-between align-items-center">
-										Jane Smith
-										<button className="btn btn-sm btn-outline-primary">Connect</button>
-										</li>
-										<li className="list-group-item d-flex justify-content-between align-items-center">
-										Bob Johnson
-										<button className="btn btn-sm btn-outline-primary">Connect</button>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div className="col-lg-6">
-							<div className="card mb-3">
-								<div className="card-body">
-									<form>
-										<div className="mb-3">
-											<textarea className="form-control" id="postText" rows="3" placeholder="What's on your mind?"></textarea>
-										</div>
-										<div className="mb-3">
-											<label for="postImage" className="form-label">Add an image (optional)</label>
-											<input className="form-control" type="file" id="postImage"/>
-										</div>
-										<div className="d-flex justify-content-end">
-											<button type="submit" className="btn btn-primary">Post</button>
-										</div>
-									</form>
-								</div>
-							</div>
-
-							<Post/>
-						</div>
+						</div>						
 					</div>
-				</div>
-			</main>
+				</nav>
+			</header>
 
+			
+			<Routes>
+				<Route exact path="/" element={<Home/>}/>
+				<Route path="openings" element={<Openings />} />
+				<Route path="openings/job/:jobName" element={<Job />} />
+				
+
+				<Route path="/signup" element={<Signup />} />
+				<Route path="/login" element={<Login />} />
+			</Routes>
 		</>
+
 	);
 }
 

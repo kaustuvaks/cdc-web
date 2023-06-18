@@ -1,7 +1,6 @@
 import Jobc4 from '../components/Jobc4';
 import {useEffect, useState} from 'react';
-import { Routes,Route, Link ,Outlet, useNavigate} from 'react-router-dom';
-import NotFound from '../components/NotFound';
+import { Link ,useNavigate} from 'react-router-dom';
 
 function Openings(){
 
@@ -30,6 +29,40 @@ function Openings(){
 
     return(
         <>
+{/* 
+			<header>
+				<nav className="navbar navbar-expand-lg navbar-light bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+					<div className="container-fluid">
+						
+						<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+							<span className="navbar-toggler-icon"></span>
+						</button>
+						<div className="collapse navbar-collapse" id="navbarNav">
+							<ul className="navbar-nav">
+								<li className="nav-item"><Link to="/" class="navbar-brand">CDC-WEB</Link></li>
+								<li className="nav-item">
+								<Link to="/" className="nav-link active">Home</Link>
+								</li>
+								<li className="nav-item">
+									<Link to="/openings" className="nav-link active">Openings</Link>
+								</li>
+								
+							</ul>
+							<div className="dropdown text">
+								<a href="#" className="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+									<img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle"/>
+								</a>
+								<ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+									<li><a className="dropdown-item" href="#">Settings</a></li>
+									<li><a className="dropdown-item" href="#">Profile</a></li>
+									<li><hr className="dropdown-divider" /></li	>
+									<li><a className="dropdown-item" href="#">Sign out</a></li>
+								</ul>
+							</div>
+						</div>						
+					</div>
+				</nav>
+			</header> */}
 			<div className="container py-3">
 				<div className="dropdown">
 					<button className="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
