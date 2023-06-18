@@ -7,7 +7,8 @@ import { UserAuthContext } from '../App';
 
 function Login(){
 
-    const {user, setUser} = useContext(UserAuthContext);
+    const {user, setUser, loggedIn, setLoggedIn} = useContext(UserAuthContext);
+    
 
     const navigate = useNavigate();
 
@@ -36,8 +37,9 @@ function Login(){
                 if(response.data.value === "notexists"){
                     
                 }else if(response.data.value === "exists"){
-                    setUser(response.data.users)
-                    navigate("/", {state:response.data.users})
+                    setUser(response.data.users);
+                    setLoggedIn(true);
+                    navigate("/", {state:response.data.users});
                 }
             });
             

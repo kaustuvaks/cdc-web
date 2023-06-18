@@ -1,6 +1,6 @@
 import './App.css';
 import Post from './components/Post';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 import Openings from './pages/Openings';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -36,8 +36,15 @@ function App() {
 	// }
 
 	const [user, setUser] = useState({});
+	const [loggedIn, setLoggedIn] = useState(false);
+
+	const handleLogout = () =>{
+		setLoggedIn(false);
+		setUser({});
+	};
+
 	return (
-		<UserAuthContext.Provider value={{user, setUser}}>
+		<UserAuthContext.Provider value={{user, setUser, loggedIn, setLoggedIn}}>
 			<header>
 				<nav className="navbar navbar-expand-lg navbar-light bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					<div className="container-fluid">
@@ -64,7 +71,7 @@ function App() {
 									<li><a className="dropdown-item" href="#">Settings</a></li>
 									<li><a className="dropdown-item" href="#">Profile</a></li>
 									<li><hr className="dropdown-divider" /></li	>
-									<li><a className="dropdown-item" href="#">Sign out</a></li>
+									<li><a className="dropdown-item" href="#" onClick={handleLogout}>Sign out</a></li>
 								</ul>
 							</div>
 						</div>						
@@ -74,7 +81,9 @@ function App() {
 
 			
 			<Routes>
-				<Route exact path="/" element={<Home user={user}/>}/>
+
+				
+				<Route exact path="/" element={loggedIn ?(<Home user={user}/>):(<Navigate to="/login" />) }/>
 				<Route path="openings" element={<Openings />} />
 				<Route path="openings/job/:jobName" element={<Job />} />
 				
