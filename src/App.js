@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Job from './pages/Job';
 import Home from './pages/Home';
 import { createContext, useState } from 'react';
+import Profile from './pages/Profile';
 
 export const UserAuthContext = createContext();
 
@@ -69,7 +70,7 @@ function App() {
 								</a>
 								<ul className="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 									<li><a className="dropdown-item" href="#">Settings</a></li>
-									<li><a className="dropdown-item" href="#">Profile</a></li>
+									<li><Link to="/profile" className="dropdown-item">Profile</Link></li>
 									<li><hr className="dropdown-divider" /></li	>
 									<li><a className="dropdown-item" href="#" onClick={handleLogout}>Sign out</a></li>
 								</ul>
@@ -84,6 +85,8 @@ function App() {
 
 				
 				<Route exact path="/" element={loggedIn ?(<Home user={user}/>):(<Navigate to="/login" />) }/>
+				{/* <Route path="profile" element={loggedIn ?(<Profile user={user}/>):(<Navigate to="/login" />) }/> */}
+				<Route path="profile" element={<Profile user={user}/> }/>
 				<Route path="openings" element={<Openings />} />
 				<Route path="openings/job/:jobName" element={<Job />} />
 				

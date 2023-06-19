@@ -1,6 +1,11 @@
+import { useContext } from 'react';
 import Post from '../components/Post';
+import { UserAuthContext } from '../App';
+import { Link } from 'react-router-dom';
 
-function Home({user}){
+function Home(){
+
+    const {user} = useContext(UserAuthContext);
     return(
 
             <main>
@@ -11,7 +16,7 @@ function Home({user}){
                             <div className="card-body">
                                 <h5 className="card-title">{user.name}</h5>
                                 <p className="card-text">View and edit your profile</p>
-                                <a  className="btn btn-primary" href="#">View Profile</a>
+                                <div className="btn btn-primary"><Link to="/profile" className="dropdown-item">View Profile</Link></div>
                             </div>
                         </div>
                         <div className="card">
